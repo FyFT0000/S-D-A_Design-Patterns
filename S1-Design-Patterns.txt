@@ -1,0 +1,10 @@
+https://www.coursera.org/learn/design-patterns?specialization=software-design-architecture
+
+Design Patterns
+    Introduction to Design Patterns: Creational & Structural Patterns
+
+
+2.1.1   What is a Design Pattern?
+A design pattern is a practical proven solution to a recurring design problem. Instead of solving a particular software problem by basic objectory into programming principles every time, where you would have to decide what objects to use? How objects need to relate and so on? You can use previously outlined solutions that expert developers have often used.
+
+2.1.2   Creational, Structural, and Behavioural Patterns
