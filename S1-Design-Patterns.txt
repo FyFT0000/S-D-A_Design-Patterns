@@ -7,4 +7,23 @@ Design Patterns
 2.1.1   What is a Design Pattern?
 A design pattern is a practical proven solution to a recurring design problem. Instead of solving a particular software problem by basic objectory into programming principles every time, where you would have to decide what objects to use? How objects need to relate and so on? You can use previously outlined solutions that expert developers have often used.
 
-2.1.2   Creational, Structural, and Behavioural Patterns
+Pattern Languages: is a collection of patterns that are related to a certain problem space. Based on context, you must decide which ones will suit your problem or design issue the best. However, sometimes you must consider trade-offs in design – some patterns may be more resource-intensive.
+
+2.1.2   Categories of Patterns: The Gang of Four’s pattern catalog contains 23 patterns. These patterns can be sorted into three different categories: creational patterns, structural patterns, and behavioral patterns. Some patterns might have elements that allow them to span all of the categories – it is not always clear cut which categories a pattern falls under.
+The different ways of creating objects will greatly influence how a problem is solved. Therefore, different languages therefore impact what patterns are possible to use.
+_   Creational patterns: tackle how you handle creating or cloning new objects. Cloning an object occurs when you are creating an object that is similar to an existing one, and instead of instantiating a new object, you clone existing objects instead of instantiating them.
+The different ways of creating objects will greatly influence how a problem is solved. Therefore, different languages therefore impact what patterns are possible to use.
+_   Structural patterns: describe how objects are connected to each other. These patterns relate to the design principles of decomposition and generalization, as discussed in the first course in this specialization. Also describe how subclasses and classes interact through inheritance. Structural patterns use these relationships and describe how they should work to achieve a particular design goal. Each structural pattern determines the various suitable relationships among the objects.
+_   Behavioral patterns: focus on how objects distribute work and describe how each object does a single cohesive function. Behavioral patterns also focus on how independent objects work towards a common goal.
+
+2.1.3   Singleton Pattern (Creational)
+Describes a way to create an object. It is a powerful technique, but it is also one of the simplest examples of a design pattern.
+_   A singleton design pattern only has one object of a class. This might be desirable in order to circumvent conflicts or inconsistencies, by keeping clear which object the program should draw from. For example, the preferences of an app, the print queue of your printer, or the software driver for a device are all objects where it is preferable to only have one. If there are multiple instances, it can be confusing for the program output.
+_   Another goal of the singleton design pattern is that the single object is globally accessible within the program.
+_   In order to implement a singleton design pattern, the best practice is to build the “one and only one” goal into the class itself so that creating another instance of a Singleton class is not even possible. This “codifies” the design intent within the software. This is necessary if working on a large project or on projects with multiple developers, but it is helpful even on smaller or individual projects.
+_   A Singleton class Lazy creation version means that the object is not created until it is truly needed. This is helpful, especially if the object is large. As the object is not created until the “getInstance” method is called, the program is more efficient.
+_   There are trade-offs to the Singleton design principle. If there are multiple computing threads running, there could be issues caused by the threads trying to access the shared single object.
+_   In real use, there may be variations of how Singleton is realized because design patterns are defined by purpose and not exact code. The intent of a Singleton pattern is to provide global access to a class that is restricted to one instance. In general, this is achieved by having a private constructor with a public method that instantiates the class “if” it is not already instantiated.
+
+
+
