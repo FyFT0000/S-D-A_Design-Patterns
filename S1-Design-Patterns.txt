@@ -25,5 +25,31 @@ _   A Singleton class Lazy creation version means that the object is not created
 _   There are trade-offs to the Singleton design principle. If there are multiple computing threads running, there could be issues caused by the threads trying to access the shared single object.
 _   In real use, there may be variations of how Singleton is realized because design patterns are defined by purpose and not exact code. The intent of a Singleton pattern is to provide global access to a class that is restricted to one instance. In general, this is achieved by having a private constructor with a public method that instantiates the class “if” it is not already instantiated.
 
+2.1.4   Factory Method Pattern (Creational)
+In order to understand the Factory method pattern, we must first understand factory objects.
+Factory object:
+_   Operates like a factory in the real world, and creates objects. Factory objects make software easier to maintain, change, test, and reuse because it deals with the problem of creating objects without having to specify the class. The methods that use these factories can then focus on other behaviors.
+_   A factory object is an object whose role is to create “product” objects of particular types.
+_   The act of instantiating a class to create an object of a specific type is known as concrete instantiation. In Java, concrete instantiation is indicated with the operator “new”.
+_   Benefits of Factory Objects:
+    _It is much simpler to add new types of an object to the object factory without modifying the client code. Instead of hunting down multiple snippets of similar instantiation code, subclasses can simply be added or removed in the Factory. This only requires changing code in the Factory, or to the concrete instantiation, and not the client method.
+    _Factories allow client code to operate on generalizations. This is known as coding to an interface, not an implementation: the client method does not need to name concrete knife classes and now deals with a Knife “generalization.” As long as the client code receives the object it expects, it can satisfy its responsibilities without worrying about the details of object creation.
+    _Essentially, using factory objects means that you have cut out redundant code and made the software easier to modify, particularly if there are multiple clients that want to instantiate the same set of classes. Subclasses of the factory class can even become their own specialized factories!. Generally, in order to create a “specialized” product object, a Factory Object approach would subclass the factory class.
+_   Concrete instantiation is the primary purpose of Factories. In general, a factory object is an instance of a factory class, which has a method to create product objects.
+Factory Method Pattern:
+_   The factory object is not actually a design pattern onto itself. The Factory method pattern does not use a factory object to create the objects; instead, the Factory method uses a separate “method” in the same class to create objects. The power of the Factory method comes in particular from how they create specialized product objects.
+_   This design pattern’s intent is to define an interface for creating objects but lets the subclasses decide which class to instantiate. So, instead of working with a factory object, we specialize or subclass the class that uses the Factory Method. Each subclass must define its own Factory Method. This is known as letting the subclasses decide how objects are made.
+    _There should be an abstract Creator class that contains methods that only operate on generalizations. The Factory Method is declared by the Creator abstractly, so each Concrete Creator class is obliged to provide a Factory Method.
+    _There should also be a subclass of the abstract Creator class, a Concrete Creator that is responsible for concrete instantiation. The Concrete Creator inherits methods from the abstract Creator.
+    _There should be a factoryMethod() in the concrete creator subclass. Every time a Concrete Creator subclass is added to the design, the factoryMethod() must be defined to make the right products. This is how the subclass “decides” to create objects.
+    _Finally, the Product superclass generalizes the Concrete Products.
+    _The methods of the Creator class only operate on the general Product, never the Concrete Products. The Concrete Products are made by the Concrete Creator. The type of product made is decided by which Concrete Creator is made.
+
+
+
+
+
+
+
 
 
