@@ -60,6 +60,24 @@ _   In summary, the façade design pattern:
     _Provides client classes with a simplified interface for the subsystem.
     _Acts simply as a point of entry to a subsystem and does not add more functional subsystems.
 
+2.1.6   Adapter Pattern (Structural)
+Facilitates communication between two existing systems by providing a compatible interface.
+_   The adapter design pattern consists of several parts:
+    _1. A client class. This class is the part of your system that wants to use a third-party library or external system.
+    _2. An adaptee class. This class is the third-party library or external system that is to be used.
+    _3. An adapter class. This class sits between the client and the adaptee. The adapter conforms to what the client is expecting to see, by implementing a target interface. The adapter also translates the client request into a message that the adaptee will understand, and returns the translated request to the adaptee. The adapter is a kind of wrapper class.
+    _4. A target interface. This is used by the client to send a request to the adapter.
+_   Implementation of an adapter design pattern can also be broken down into steps:
+    _1. Design the target interface.
+    _2. Implement the target interface with the adapter class.
+    _3. Send the request from the client to the adapter using the target interface.
+_   In summary, an adapter is meant to:
+    _Wrap the adaptee and exposes a target interface to the client.
+    _Indirectly change the adaptee’s interface into one that the client is expecting by implementing a target interface.
+    _Indirectly translate the client’s request into one that the adaptee is expecting.
+    _Reuse an existing adaptee with an incompatible interface.
+
+
 
 
 
