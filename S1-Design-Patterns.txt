@@ -45,6 +45,21 @@ _   This design pattern’s intent is to define an interface for creating object
     _Finally, the Product superclass generalizes the Concrete Products.
     _The methods of the Creator class only operate on the general Product, never the Concrete Products. The Concrete Products are made by the Concrete Creator. The type of product made is decided by which Concrete Creator is made.
 
+2.1.5   Facade Pattern (Structural)
+As systems or parts of systems become larger, they also become more complex. Client classes function better with a simpler interaction, however. The façade design pattern attempts to resolve this issue by providing a single, simplified interface for client classes to interact with a subsystem.
+_   A façade is a wrapper class that encapsulates a subsystem in order to hide the subsystem’s complexity; it acts as a point of entry into a subsystem without adding more functionality in itself. The wrapper class allows a client class to interact with the subsystem through the façade.
+_   A façade design pattern should therefore be used if there is a need to simplify the interaction with a subsystem for client classes and if there is a need for a class to instantiate other classes within your system and to provide these instances to another class. Often façade design patterns combine interface implementation by one or more classes, which then gets wrapped by the façade class. This can be explained through a number of steps:
+    _1. Design the interface.
+    _2. Implement the interface with one or more classes.
+    _3. Create the façade class and wrap the classes that implement the interface.
+    _4. Use the façade class to access the subsystem.
+_   In summary, the façade design pattern:
+    _Hides the complexity of a subsystem by encapsulating it behind a unifying wrapper called a façade class.
+    _Removes the need for client classes to manage a subsystem on their own, which results in less coupling between the subsystem and the client classes.
+    _Handles instantiation and redirection of tasks to the appropriate class within the subsystem.
+    _Provides client classes with a simplified interface for the subsystem.
+    _Acts simply as a point of entry to a subsystem and does not add more functional subsystems.
+
 
 
 
