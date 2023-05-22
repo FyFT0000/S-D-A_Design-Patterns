@@ -94,6 +94,26 @@ _  Expressing this pattern through a number of steps:
     _3. Implement the leaf class
 _   Composite design patterns apply the design principles of decomposition and generalization. They break a whole into parts but the whole and parts both conform to a common type. Complex structures can be built using composite objects and leaf objects that belong to a unified component type. This makes it easier to understand and manipulate this structure.
 
+2.1.8   Proxy Pattern (Structural)
+Allows a proxy class to represent a real “subject” class. A proxy is something that acts as a simplified, or lightweight version, of the original object. A proxy object can perform the same tasks as an original object but may delegate requests to the original object to achieve them.
+_   In this design pattern, the proxy class wraps the real subject class. This means that a reference to an instance of the real subject class is hidden in the proxy class. The real object is usually a part of the software system that contains sensitive information, or that would be resource-intensive to instantiate. As the proxy class is a wrapper, client classes interact with it instead of the real subject class.
+_   The three most common scenarios where proxy classes are used are:
+    _To act as a virtual proxy. This is when a proxy class is used in place of a real subject class that is resource-intensive to instantiate. This is commonly used on images in web pages or graphic editors, as a high-definition image may be extremely large to load.
+    _To act as a protection proxy. This is when a proxy class is used to control access to the real subject class. For example, a system that is used by both students and instructors might limit access based on roles.
+    _To act as a remote proxy. This is when a proxy class is local, and the real subject class exists remotely. Google docs make use of this, where web browsers have all the objects it needs locally, which also exist on a Google server somewhere else.
+_   Implementation of this pattern in Java can be broken down into steps:
+    _1. Design the subject interface.
+    _2. Implement the real subject class.
+    _3. Implement the proxy class.
+_   In summary, a proxy design pattern allows you to defer creating resource-intensive objects until needed, control access to specific objects, or when you need something to act as a local representation of a remote system. They made systems more secure, and less resource-intensive. The main features of a proxy design pattern are:
+    _To use the proxy class to wrap the real subject class.
+    _To have a polymorphic design so that the client class can expect the same interface for the proxy and real subject classes.
+    _To use a lightweight proxy in place of a resource-intensive object until it is actually needed.
+    _To implement some form of intelligent verification of requests from client code in order to determine if, how, and to whom the requests should be forwarded to.
+    _To present a local representation of a system that is not in the same physical or virtual space.
+
+
+
 
 
 
