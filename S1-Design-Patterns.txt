@@ -77,6 +77,28 @@ _   In summary, an adapter is meant to:
     _Indirectly translate the client’s request into one that the adaptee is expecting.
     _Reuse an existing adaptee with an incompatible interface.
 
+2.1.7   Composite Pattern (Structural)
+Allows to build a tree-like structure of objects and to treat individual types of those objects uniformly. This is achieved by:
+    _Enforcing polymorphism across each class through implementing an interface (or inheriting from a superclass).
+    _Using a technique called recursive composition that allows objects to be composed of other objects that are of a common type.
+_   Is meant to achieve two goals:
+    _To compose nested structures of objects: Individual types of objects, in particular, composite class objects, can aggregate component classes, which create a tree-like structure.
+    _To deal with the classes for these objects uniformly: Each individual class is a subtype of an interface or superclass that will be able to conform to a set of shared behaviors.
+_   In this design, a component interface serves as the supertype for a set of classes. Using polymorphism, all implementing classes conform to the same interface, which allows them to be dealt with uniformly. An abstract superclass can also be used in place of an interface, as both allow for polymorphism.
+_   A composite class is present as well. This class is used to aggregate any class that implements the component interface. The composite class allows you to “traverse through” and “potentially manipulate” the component objects that the composite object contains.
+_   A leaf class represents a non-composite type. It is not composed of other components. _The leaf class and the composite class implement the Component interface, unifying them with a single type. This allows us to deal with non-composite and composite objects uniformly – the Leaf class and the Composite class are now considered subtypes of Component. You may have other composite or leaf classes in practice, but there will only be one overall component interface or abstract superclass.
+_   Another important concept to note is that a composite object can contain other composite objects since the composite class is a subtype of the component. This is known as recursive composition. This term is also a synonym for composite design patterns. Composites have the ability to “grow” a tree, while a leaf ends the tree where it is.
+_  Expressing this pattern through a number of steps:
+    _1. Design the interface that defines the overall type, that the composite and leaf classes will implement.
+    _2. Implement the composite class.
+    _3. Implement the leaf class
+_   Composite design patterns apply the design principles of decomposition and generalization. They break a whole into parts but the whole and parts both conform to a common type. Complex structures can be built using composite objects and leaf objects that belong to a unified component type. This makes it easier to understand and manipulate this structure.
+
+
+
+
+
+
 
 
 
