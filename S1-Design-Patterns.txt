@@ -112,6 +112,30 @@ _   In summary, a proxy design pattern allows you to defer creating resource-int
     _To implement some form of intelligent verification of requests from client code in order to determine if, how, and to whom the requests should be forwarded to.
     _To present a local representation of a system that is not in the same physical or virtual space.
 
+2.1.9   Decorator Pattern (Structural)
+Allows additional behaviors or responsibilities to be dynamically attached to an object, through the use of aggregation to combine behaviors at run time.
+_   It is beneficial for software to have flexible combinations of overall behaviors. However, changes to classes cannot be made while a program is running, as the behavior of an object is defined by its class, and only occurs at compile time. A new class would need to be created in order to achieve a new combination of behaviors while a program is running. Lots of new combinations, however, would lead to lots of classes, which is undesirable.
+_   Aggregation is a design principle used to represent a “has-a” or “weak containment” relationship between two objects. This can be used to build a stack of objects, also known as an “aggregation stack”, where each level of the stack contains an object that knows about its own behavior and augments the one underneath it.
+_   In an aggregation stack, the aggregation relationship is always one-to-one in the decorator design pattern. This allows the stack to build up, so one object is on top of another.
+_   This design pattern makes use of interfaces and inheritance so that the classes conform to a common type whose instances can be stacked in a compatible way. This builds a coherent combination of behavior overall.
+_   It consists of a Component interface that defines the common type for all the classes. A client class expects the same interface across all the component classes. A
+concrete component class implements the component interface and can be instantiated. An instance of this class can be used as a base object in the stack.
+_   As indicated by the italics, Decorator is an abstract class. Similar to the concrete component class, it implements the component interface. However, the Decorator class aggregates other types of components, which will allow us to “stack” components on top of each other. It also serves as the abstract superclass of concrete decorator classes that will each provide an increment of behavior.
+_   A stack of components can be built starting with an instance of the concrete component class and continuing with instances of subclasses of the decorator abstract class.
+_   Decorator design patterns allow objects to dynamically add behaviors to others, and it reduces the number of classes needed to offer a combination of behaviors.
+_   Implementation of this design pattern with Java can be broken down into steps:
+    _1. Design the component interface.
+    _2. Implement the interface with your base concrete component class.
+    _3. Implement the interface with your abstract decorator class.
+    _4. Inherit from the abstract decorator and implement the component interface with concrete decorator classes.
+_   In summary, the main features of a decorate design pattern are:
+    _We can add, in effect, any number of behaviors dynamically to an object at runtime by using aggregation as a substitute for pure inheritance.
+    _Polymorphism is achieved by implementing a single interface.
+    _Aggregation lets us create a stack of objects.
+    _Each decorator object in the stack is aggregated in a one-to-one relationship with the object below it in the stack.
+    _By combining aggregation and polymorphism, we can recursively invoke the same behavior down the stack and have the behavior execute upwards from the concrete component object.
+_   The use of design patterns like the decorator pattern helps to create complex software, without the complex overhead.
+
 
 
 
