@@ -141,6 +141,29 @@ Defines an algorithm’s steps generally, by deferring the implementation of som
 _   The template method is best used when you can generalize between two classes into a new superclass. Think of it as another technique to use when you notice you have two separate classes with very similar functionality and order of operations. You can choose to use a template method, so changes to these algorithms only need to be applied in one place instead of two. The template method would be within the superclass, and would therefore be inherited by the subclasses. Differences in algorithms would be done through calls to abstract methods whose implementations are provided by the subclass. After using generalization, objects can be more effectively reused. Inheritance allows functionality to be shared between classes and enables clearer and more self-explanatory code.
 
 2.2.2	Chain of Responsibility Pattern (Behavioural)
+Is a chain of objects that are responsible for handling requests. In software design, these objects are handler objects that are linked together.
+_   When a client object sends a request, the first handler in the chain will try to process it. If the handler can process the request, then the request ends with this handler. However, if the handler cannot handle the request, then the request is sent to the next handler in the chain. This process will continue until a handler can process the request. If the entire chain is unable to handle the request, then the request is not satisfied.
+_   The chain of responsibility is an important pattern in software. This pattern avoids coupling the sender to the receiver by giving more than one object a chance to handle the request. Whoever sends the request does not need to to worry about who will handle the request, so the sender and the receiver are decoupled from each other. The chain of responsibility also helps deal with situations in which streams of different requests need to be handled.
+_   This pattern is similar to exception handling in Java. In exception handling, a series of try/catch blocks are written in your software to ensure that exceptions are dealt with properly. When an exception occurs, one of the catch blocks is expected to handle it.
+_   The chain of responsibility can be used for many different purposes. For example, it is commonly used for filtering objects, such as putting certain emails into a spam folder.
+_   The chain of responsibility pattern does not come without potential issues. For example, what if there’s a mistake in the second filter and its rule doesn’t match but forgets to pass the request on to the next filter. In this case, the handling ends prematurely. To circumvent this problem, there needs to be an algorithm that ensures each filter class handles requests in a similar fashion. Each filter needs to go through the following steps:
+    _1. Check if the rule matches.
+    _2. If it matches, do something specific.
+    _3. If it doesn’t match, call the next filter in the list.
+    _It may be helpful to use the template pattern to ensure that each class will handle a request in a similar way, following the above steps.
+
+2.2.3   State Pattern (Behavioural)
+This pattern should be primarily used when you need to change the behavior of an object based upon changes to its internal state or the state it is in at run-time. This pattern can also be used to simplify methods with long conditionals that depend on the object’s state.
+_   Objects in your code are aware of their current state. They can choose an appropriate behavior based on their current state. When their current state changes, this behavior can be altered - this is the state design pattern.
+_   Using the State design pattern, long conditionals are not necessary for the methods and creates much cleaner code.
+
+2.2.4   Command Pattern (Behavioural)
+
+
+
+
+
+
 
 
 
