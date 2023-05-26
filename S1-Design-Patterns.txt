@@ -180,6 +180,13 @@ _   A common usage for the mediator pattern, identified by the Gang of Four, is 
 _   The Mediator allows for loose coupling between colleagues. Since each of these colleagues only communicates with the mediator, they can be reused more easily. Centralizing the logic of interaction between all of these related objects in one central object makes for code that is easier to read, maintain, and extend.
 _   On the other hand, the mediator can quickly become very large. Large classes are generally discouraged because they make code more difficult to debug. The benefits of centralization should be balanced against the downsides of a large, difficult-to-read mediator class.
 
+2.2.5 – Observer Pattern (Behavioural)
+A subject keeps a list of observers. Observers rely on the subject to inform them of changes to the state of the subject.
+_   In an observer design pattern, there is generally a Subject superclass, which would have an attribute to keep track of all the observers. There is also an Observer interface with a method so that an observer can be notified of state changes to the subject. The Subject superclass may also have subclasses that implement the Observer interface. These elements create the relationship between the subject and observer.
+_   Observer design patterns save time when implementing a system. If many objects rely on the state of one, the observer design pattern has even more value. Instead of managing all observer objects individually, the subject manages them and ensures observers are updating themselves as needed.
+_   This behavior pattern is typically used to make it easy to distribute and handle notifications of changes across systems in a manageable and controlled way.
+
+
 
 
 
