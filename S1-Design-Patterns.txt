@@ -186,6 +186,17 @@ _   In an observer design pattern, there is generally a Subject superclass, whic
 _   Observer design patterns save time when implementing a system. If many objects rely on the state of one, the observer design pattern has even more value. Instead of managing all observer objects individually, the subject manages them and ensures observers are updating themselves as needed.
 _   This behavior pattern is typically used to make it easy to distribute and handle notifications of changes across systems in a manageable and controlled way.
 
+2.3.1 – MVC Pattern
+Model, View, Controller (MVC) pattern is a pattern that should be considered for use with user interfaces. MVC patterns divide the responsibilities of a system that offers a user interface into three parts: model, view, and controller.
+_   The Model is going to contain the underlying data, state, and logic that users want to see and manipulate through an interface. It is the “back end”, or the underlying software.
+_   The View gives users the way to see the model in the way they expect and allows them to interact with it or at least parts of it. It is the “front end” or the presentation layer of the software. A model could have several views that present different parts of the model, or present the model in different ways. When a value changes in the model, the view needs to be notified, so it can update itself accordingly. The observer design pattern allows this to happen.
+_   The controller is responsible for interpreting requests and interacts with elements in the view, and changing the model. The view is therefore only responsible for the visual appearance of the system. The model focuses only on managing the information for the system.
+_   A key aspect of the MVC pattern is that the model is self-contained. It has all of the state, methods, and other data needed to exist on its own.
+_   The MVC pattern uses the separation of concerns design principle to divide up the main responsibilities in an interactive system. The controller ensures that the views and the model are loosely coupled. The model corresponds to entity objects, which are derived from analyzing the problem space for the system. The view corresponds to a boundary object, which is at the edge of your system that deals with users. The controller corresponds to a control object, which receives events and coordinates actions.
+_   Controllers make the code cleaner and easier to modify. Note that in most software systems, there are generally multiple models, view, and controller classes. Controllers make the code better in the following ways:
+    _The view can focus on its main purpose: presenting the user interface, as the controller takes the responsibility of interpreting the input from the user and working with the model based on that input.
+    _The view and the model are not “tightly coupled” when a controller is between them. Features can be added to the model and tested long before they are added to the view.
+_   MVC patterns may be used in many ways. The defining feature of the MVC pattern is the separation of concerns between the back-end, the front-end, and the coordination between the two.
 
 
 
