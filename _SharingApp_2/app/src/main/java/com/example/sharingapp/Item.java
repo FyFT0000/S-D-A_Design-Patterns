@@ -79,10 +79,15 @@ public class Item extends Observable {
         return description;
     }
 
-    public void setDimensions(Dimensions dimensions) {
-        this.dimensions = dimensions;
+    public void setDimensions(String length, String width, String height) {
+        this.dimensions = new Dimensions(length, width, height);
         notifyObservers();
     }
+//    public void setDimensions(Dimensions dimensions) {  // Old setDimensions
+//        this.dimensions = dimensions;
+//        notifyObservers();
+//    }
+
     public String getLength(){
         return dimensions.getLength();
     }

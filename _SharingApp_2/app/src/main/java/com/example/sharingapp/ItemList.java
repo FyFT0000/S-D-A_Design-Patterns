@@ -118,6 +118,6 @@ public class ItemList extends Observable {
         }
         return active_borrowers;
     }
-    
+
 }
 
