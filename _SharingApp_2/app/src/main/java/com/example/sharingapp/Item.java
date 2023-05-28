@@ -22,11 +22,11 @@ public class Item extends Observable {
     protected String image_base64;
     private String id;
 
-    public Item(String title, String maker, String description, Dimensions dimensions, Bitmap image, String id) {
+    public Item(String title, String maker, String description, Bitmap image, String id) {
         this.title = title;
         this.maker = maker;
         this.description = description;
-        this.dimensions = dimensions;
+        this.dimensions = null;
         this.status = "Available";
         this.borrower = null;
         addImage(image);
@@ -98,9 +98,9 @@ public class Item extends Observable {
         return dimensions.getHeight();
     }
 
-    public Dimensions getDimensions() {
-        return dimensions;
-    }
+//    public Dimensions getDimensions() {
+//        return dimensions;
+//    }
 
     public void setStatus(String status) {
         this.status = status;
