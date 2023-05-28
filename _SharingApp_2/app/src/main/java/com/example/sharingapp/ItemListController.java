@@ -1,5 +1,7 @@
 package com.example.sharingapp;
 import android.content.Context;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 /**
  * ItemListController is responsible for all communication between views and
@@ -23,6 +25,14 @@ public class ItemListController {
         return add_item_command.isExecuted();
     }
     public boolean deleteItem(Item item, Context context) {
+        // Check if the item is borrowed before delete
+        if (item.getStatus().equals("Borrowed") ) {
+            CharSequence text = "Item is Borrowed, can not be deleted!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast.makeText(context, text, duration).show();
+            return false;
+        }
+
         DeleteItemCommand delete_item_command = new
                 DeleteItemCommand(item_list, item, context);
         delete_item_command.execute();
