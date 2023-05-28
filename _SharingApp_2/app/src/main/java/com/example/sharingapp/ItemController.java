@@ -63,7 +63,7 @@ public class ItemController {
     public Bitmap getImage(){
         return item.getImage();
     }
-    
+
     public Item getItem() { return this.item; }
 
     public void addObserver(Observer observer) {
