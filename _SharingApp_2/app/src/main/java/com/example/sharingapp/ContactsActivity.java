@@ -89,7 +89,7 @@ public class ContactsActivity extends AppCompatActivity implements Observer {
         super.onDestroy();
         contact_list_controller.removeObserver(this);
     }
-    
+
     /**
      * Update the view
      */

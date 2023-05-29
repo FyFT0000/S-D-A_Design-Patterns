@@ -1,11 +1,12 @@
 package com.example.sharingapp;
 
+import java.util.Observable;
 import java.util.UUID;
 
 /**
  * Contact class
  */
-public class Contact {
+public class Contact extends Observable {
     private String username;
     private String email;
     private String id;
@@ -21,14 +22,26 @@ public class Contact {
         }
     }
 
-    public void setId() { this.id = UUID.randomUUID().toString(); }
+    public void setId() {
+        this.id = UUID.randomUUID().toString();
+        notifyObservers();
+    }
     public String getId() { return this.id; }
-    public void updateId(String id) { this.id = id; }
+    public void updateId(String id) {
+        this.id = id;
+        notifyObservers();
+    }
 
-    public void setUsername(String username) {this.username = username; }
+    public void setUsername(String username) {
+        this.username = username;
+        notifyObservers();
+    }
     public String getUsername() { return username; }
 
-    public void setEmail(String email) {this.email = email; }
+    public void setEmail(String email) {
+        this.email = email;
+        notifyObservers();
+    }
     public String getEmail() {return email; }
 
 }
