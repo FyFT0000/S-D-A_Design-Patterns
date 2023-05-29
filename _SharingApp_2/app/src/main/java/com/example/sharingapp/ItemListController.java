@@ -1,8 +1,9 @@
 package com.example.sharingapp;
+
 import android.content.Context;
 import android.widget.Toast;
-
 import java.util.ArrayList;
+
 /**
  * ItemListController is responsible for all communication between views and
  ItemList object

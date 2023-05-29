@@ -1,5 +1,7 @@
 package com.example.sharingapp;
+
 import android.graphics.Bitmap;
+
 /**
  * ItemController is responsible for all communication between views and Item
  object

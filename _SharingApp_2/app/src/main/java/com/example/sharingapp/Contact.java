@@ -1,6 +1,5 @@
 package com.example.sharingapp;
 
-import java.util.Observable;
 import java.util.UUID;
 
 /**

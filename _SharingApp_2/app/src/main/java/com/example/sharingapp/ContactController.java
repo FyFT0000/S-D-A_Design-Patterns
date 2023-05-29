@@ -1,7 +1,5 @@
 package com.example.sharingapp;
 
-import java.util.UUID;
-
 /**
  * ContactController is responsible for all communication between views and Contact object
  */
@@ -38,9 +36,9 @@ public class ContactController {
         return this.contact;
     }
     public void addObserver(Observer observer) {
-        contact.addObserver(observer);
+        this.contact.addObserver(observer);
     }
     public void removeObserver(Observer observer) {
-        contact.removeObserver(observer);
+        this.contact.removeObserver(observer);
     }
 }
