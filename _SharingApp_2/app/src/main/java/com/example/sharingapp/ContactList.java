@@ -13,11 +13,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
  * ContactList class
  */
-public class ContactList {
+public class ContactList extends Observable {
     private ArrayList<Contact> contacts;
     private String FILENAME = "contacts.sav";
 
@@ -27,6 +28,7 @@ public class ContactList {
 
     public void setContacts(ArrayList<Contact> contact_list) {
         contacts = contact_list;
+        notifyObservers();
     }
     public ArrayList<Contact> getContacts(){
         return contacts;
@@ -40,12 +42,18 @@ public class ContactList {
         return allUsernames;
     }
 
-    public void addContact(Contact contact) { contacts.add(contact); }
-    public void deleteContact(Contact contact) { contacts.remove(contact); }
+    public void addContact(Contact contact) {
+        contacts.add(contact);
+        notifyObservers();
+    }
+    public void deleteContact(Contact contact) {
+        contacts.remove(contact);
+        notifyObservers();
+    }
     public Contact getContact(int index) { return contacts.get(index);}
 
     public int getSize() {return contacts.size(); }
-    public int getIndex1(Contact contact) {return contacts.indexOf(contact); }
+
     public int getIndex(Contact contact) {
         int index = 0;
         for (Contact i : contacts) {
@@ -56,15 +64,15 @@ public class ContactList {
         }
         return -1;
     }
-    public boolean hasContact1(Contact contact) {return contacts.contains(contact); }
+
     public boolean hasContact(Contact contact) {
         for (Contact i : contacts) {
             if (i.getUsername().equals(contact.getUsername())) {
                 return true;
             }
-            }
-        return false;
         }
+        return false;
+    }
 
     public Contact getContactByUsername(String username) {
         for (Contact i : contacts) {
@@ -88,7 +96,7 @@ public class ContactList {
         } catch (IOException e) {
             contacts = new ArrayList<Contact>();
         }
-
+        notifyObservers();
     }
 
     public boolean saveContacts(Context context) {
@@ -112,9 +120,5 @@ public class ContactList {
     public boolean isUsernameAvailable(String username) {
         return !contacts.contains(getContactByUsername(username));
     }
-
-
-
-
 
 }
