@@ -75,9 +75,9 @@ public class ContactList extends Observable {
     }
 
     public Contact getContactByUsername(String username) {
-        for (Contact i : contacts) {
-            if (i.getUsername().equals(username)) {
-                return i;
+        for (Contact c : contacts) {
+            if (c.getUsername().equals(username)) {
+                return c;
             }
         }
         return null;
