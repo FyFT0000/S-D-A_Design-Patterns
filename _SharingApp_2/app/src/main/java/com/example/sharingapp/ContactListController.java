@@ -74,4 +74,10 @@ public class ContactListController {
     public boolean isUsernameAvailable(String username) {
         return this.isUsernameAvailable(username);
     }
+    public void addObserver(Observer observer) {
+        contactList.addObserver(observer);
+    }
+    public void removeObserver(Observer observer) {
+        contactList.removeObserver(observer);
+    }
 }
