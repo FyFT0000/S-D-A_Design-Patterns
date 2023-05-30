@@ -12,33 +12,33 @@ public class ContactController {
     }
 
     public void setId() {
-        this.setId();
+        contact.setId();
     }
     public String getId() {
-        return this.getId();
+        return contact.getId();
     }
     public void updateId(String id) {
-        this.updateId(id);
+        contact.updateId(id);
     }
     public void setUsername(String username) {
-        this.setUsername(username);
+        contact.setUsername(username);
     }
     public String getUsername() {
-        return this.getUsername();
+        return contact.getUsername();
     }
     public void setEmail(String email) {
-        this.setEmail(email);
+        contact.setEmail(email);
     }
     public String getEmail() {
-        return this.getEmail();
+        return contact.getEmail();
     }
     public Contact getContact() {
-        return this.contact;
+        return contact;
     }
     public void addObserver(Observer observer) {
-        this.contact.addObserver(observer);
+        contact.addObserver(observer);
     }
     public void removeObserver(Observer observer) {
-        this.contact.removeObserver(observer);
+        contact.removeObserver(observer);
     }
 }
