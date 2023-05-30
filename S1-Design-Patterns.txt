@@ -198,6 +198,19 @@ _   Controllers make the code cleaner and easier to modify. Note that in most so
     _The view and the model are not “tightly coupled” when a controller is between them. Features can be added to the model and tested long before they are added to the view.
 _   MVC patterns may be used in many ways. The defining feature of the MVC pattern is the separation of concerns between the back-end, the front-end, and the coordination between the two.
 
+2.3.1a – Liskov Substitution Principle
+If a class, S, is a subtype of a class, B, then S can be used to replace all instances of B without changing the behaviors of a program.
+_   The logic behind this is straightforward. If S is a subtype of B, then it can be expected that S will have the same behaviours as B. Therefore, S can be used in place of B and it would not affect the software. This means that inheritance can be tested by applying substitution. If inheritance is not used correctly, it can lead to a violation of the “Liskov Substitution Principle”.
+_   Inheritance Guidelines: There are a number of constraints that the Liskov Substitution Principle places on subclasses in order to enforce proper use of inheritance:
+    _1. The condition used to determine if a base class should or should not invoke a method cannot be "strengthened" by a subclass. That is, a subclass cannot add more conditions to determine if a method should be called.
+    _2. The condition of the program after the execution of a method cannot be "weakened" by a subclass. This means that the subclass should cause the state of the program to be in the same state as the base class after a method call. Subclasses are allowed to "strengthen" the postcondition of a program. For example, if the base class sets an alarm for a specific date, the subclass must do the same, but the result can be more precise by setting the specific hour as well.
+    _3. Invariant conditions that exist in the base class, must also remain invariant in the subclass. Since invariant conditions are expected to be immutable, the subclass should not change them as it may cause a side effect in the behaviours of the base class or the program.
+    _4. Immutable characteristics of a base class must not be changed by the subclass. Since classes can modify their own characteristics, a subclass can modify all the characteristics that it inherits from the base. However, the base class may encapsulate attributes that should be fixed values. These values are identifiable by observing whether or not they are changed in the program, or by a method in the base class. If it is not changed, then these attributes are considered immutable. Subclasses can get around this problem by declaring and modifying their own attributes. The attributes of a subclass are not visible to the base class and therefore, do not affect the behaviour of the base class.
+_   These rules are not programmatically enforced by any object-oriented language. In fact, overriding a base class's behaviors can have advantages. Subclasses can improve the performance of behaviours of its base class, without changing the expected results of said behavior.
+_   The Liskov Substitution Principle helps us determine if inheritance has been used correctly. If the expected behaviour between the subclass and the base class is different, then the principle has been violated.
+
+
+
 
 
 
