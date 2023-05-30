@@ -13,6 +13,7 @@ public class ItemListController {
     public ItemListController(ItemList item_list){
         this.item_list = item_list;
     }
+
     public void setItems(ArrayList<Item> item_list) {
         this.item_list.setItems(item_list);
     }
@@ -34,14 +35,12 @@ public class ItemListController {
             return false;
         }
 
-        DeleteItemCommand delete_item_command = new
-                DeleteItemCommand(item_list, item, context);
+        DeleteItemCommand delete_item_command = new DeleteItemCommand(item_list, item, context);
         delete_item_command.execute();
         return delete_item_command.isExecuted();
     }
     public boolean editItem(Item item, Item updated_item, Context context){
-        EditItemCommand edit_item_command = new EditItemCommand(item_list,
-                item, updated_item, context);
+        EditItemCommand edit_item_command = new EditItemCommand(item_list, item, updated_item, context);
         edit_item_command.execute();
         return edit_item_command.isExecuted();
     }

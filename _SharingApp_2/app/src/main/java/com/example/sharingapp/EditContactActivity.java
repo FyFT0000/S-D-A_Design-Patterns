@@ -5,7 +5,6 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
 /**
@@ -118,6 +117,5 @@ public class EditContactActivity extends AppCompatActivity implements Observer {
             username.setText(contactController.getUsername());
 
         }
-
     }
 }
