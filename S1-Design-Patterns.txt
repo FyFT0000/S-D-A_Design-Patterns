@@ -209,7 +209,22 @@ _   Inheritance Guidelines: There are a number of constraints that the Liskov Su
 _   These rules are not programmatically enforced by any object-oriented language. In fact, overriding a base class's behaviors can have advantages. Subclasses can improve the performance of behaviours of its base class, without changing the expected results of said behavior.
 _   The Liskov Substitution Principle helps us determine if inheritance has been used correctly. If the expected behaviour between the subclass and the base class is different, then the principle has been violated.
 
-
+2.3.2 – Open/Closed Principle
+States that classes should be open for extension but closed to change.
+_   A class is considered “closed” to editing once it has:
+    _Been tested to be functioning properly. The class should behave as expected.
+    _All the attributes and behaviors are encapsulated.
+    _Been proven to be stable within your system. The class or any instance of the class should not stop your system from running or do it harm.
+_   Although the principle is called “closed”, it does not mean that changes cannot be made to a class during development. A “closed” class occurs when a point has been reached in development when most of the design decisions have been finalized and once you have implemented most of your system.
+_   During the lifecycle of your software, certain classes should be closed to further changes to avoid introducing undesirable side effects. A “closed” class should still be fixed if any bugs or unexpected behaviors occur. If a system needs to be extended or have more features added, then the “open” side of the principle comes into play.
+_   An “open” class is one that can still be built upon. There are two different ways to extend a system with the open principle:
+    _The first way is through the inheritance of a superclass. Inheritance can be used to simply extend a class that is considered closed when you want to add more attributes and behaviors. The subclasses will have the original functions of the superclass, but extra features can be added in the subclasses. This helps preserve the integrity of the superclass, so if the extra features of the subclasses are not needed, the original class can still be used. Note that subclasses can also be extended, so this allows the open/closed principle to continually extend your system as much as desired.
+    _The second way a class can be open is when the class is abstract and enforces the open/closed principle through polymorphism. An abstract class can declare abstract methods with just the method signatures. Each concrete subclass must provide its own implementation of these methods. The methods in the  abstract superclass are preserved, and the system can be extended by providing different implementations for each method. This is useful for behaviors like sorting or searching. An interface can also enable polymorphism, but remember that it will not be able to define a common set of attributes.
+_   If you want to limit a class so that it is no longer extendable, it can be declared as “final” to prevent further inheritance. This keyword can also be used for methods.
+_   The open/closed principle is used to keep stable parts of a system separate from varying parts. It allows the addition of new features to a system, but without the expense of disrupting working parts.
+_   The open/closed principle:
+    _Helps keep a system stable by “closing” classes to change.
+    _Allows a system to open for extension through inheritance or interfaces.
 
 
 
