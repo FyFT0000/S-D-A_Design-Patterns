@@ -82,10 +82,6 @@ public class Item extends Observable {
         this.dimensions = new Dimensions(length, width, height);
         notifyObservers();
     }
-//    public void setDimensions(Dimensions dimensions) {  // Old setDimensions
-//        this.dimensions = dimensions;
-//        notifyObservers();
-//    }
 
     public String getLength(){
         return dimensions.getLength();
@@ -96,10 +92,6 @@ public class Item extends Observable {
     public String getHeight(){
         return dimensions.getHeight();
     }
-
-//    public Dimensions getDimensions() {
-//        return dimensions;
-//    }
 
     public void setStatus(String status) {
         this.status = status;

@@ -78,6 +78,7 @@ public class EditItemActivity extends AppCompatActivity implements Observer {
         item_list_controller.addObserver(this);
         item_list_controller.loadItems(context);
         on_create_update = true;
+
         contact_list_controller.addObserver(this);
         contact_list_controller.loadContacts(context);
         on_create_update = false;
@@ -97,6 +98,7 @@ public class EditItemActivity extends AppCompatActivity implements Observer {
 
     @Override
     protected void onActivityResult(int request_code, int result_code, Intent intent){
+        super.onActivityResult(request_code, result_code, intent);
         if (request_code == REQUEST_CODE && result_code == RESULT_OK){
             Bundle extras = intent.getExtras();
             image = (Bitmap) extras.get("data");
@@ -168,6 +170,7 @@ public class EditItemActivity extends AppCompatActivity implements Observer {
 
         ItemController updated_item_controller = new ItemController(updated_item);
         updated_item_controller.setDimensions(length_str, width_str, height_str);
+
         boolean checked = status.isChecked();
         if (!checked) {
             updated_item_controller.setStatus("Borrowed");
@@ -224,6 +227,7 @@ public class EditItemActivity extends AppCompatActivity implements Observer {
             borrower_spinner.setAdapter(adapter);
             item = item_list_controller.getItem(pos);
             item_controller = new ItemController(item);
+
             Contact contact = item_controller.getBorrower();
             if (contact != null){
                 int contact_pos = contact_list_controller.getIndex(contact);
@@ -235,6 +239,7 @@ public class EditItemActivity extends AppCompatActivity implements Observer {
             length.setText(item_controller.getLength());
             width.setText(item_controller.getWidth());
             height.setText(item_controller.getHeight());
+
             String status_str = item_controller.getStatus();
             if (status_str.equals("Borrowed")) {
                 status.setChecked(false);

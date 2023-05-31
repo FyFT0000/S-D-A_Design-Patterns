@@ -16,13 +16,13 @@ public class ContactListController {
     }
 
     public void setContacts(ArrayList<Contact> contact_list) {
-        this.setContacts(contact_list);
+        contactList.setContacts(contact_list);
     }
     public ArrayList<Contact> getContacts(){
-        return this.getContacts();
+        return contactList.getContacts();
     }
     public ArrayList<String> getAllUsernames(){
-        return this.getAllUsernames();
+        return contactList.getAllUsernames();
     }
     public boolean addContact(Contact contact, Context context) {
         AddContactCommand add_contact_command = new AddContactCommand(contactList, contact, context);
@@ -40,33 +40,33 @@ public class ContactListController {
         return editContactCommand.isExecuted();
     }
     public Contact getContact(int index) {
-        return this.getContact(index);
+        return contactList.getContact(index);
     }
     public int getSize() {
-        return this.getSize();
+        return contactList.getSize();
     }
     public int getIndex(Contact contact) {
-        return this.getIndex(contact);
+        return contactList.getIndex(contact);
     }
     public boolean hasContact(Contact contact) {
-        return this.hasContact(contact);
+        return contactList.hasContact(contact);
     }
     public Contact getContactByUsername(String username) {
-        return this.getContactByUsername(username);
+        return contactList.getContactByUsername(username);
     }
     public void loadContacts(Context context) {
-        this.loadContacts(context);
+        contactList.loadContacts(context);
     }
     public boolean saveContacts(Context context) {
-        return this.saveContacts(context);
+        return contactList.saveContacts(context);
     }
     public boolean isUsernameAvailable(String username) {
-        return this.isUsernameAvailable(username);
+        return contactList.isUsernameAvailable(username);
     }
     public void addObserver(Observer observer) {
-        this.contactList.addObserver(observer);
+        contactList.addObserver(observer);
     }
     public void removeObserver(Observer observer) {
-        this.contactList.removeObserver(observer);
+        contactList.removeObserver(observer);
     }
 }

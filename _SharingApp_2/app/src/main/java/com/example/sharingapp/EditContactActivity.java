@@ -5,7 +5,6 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
 /**
@@ -23,7 +22,7 @@ public class EditContactActivity extends AppCompatActivity implements Observer {
     private EditText username;
     private Context context;
 
-    private boolean on_create_update = false;
+    private boolean on_create_update = true;
     private int pos;
 
     @Override
@@ -31,22 +30,12 @@ public class EditContactActivity extends AppCompatActivity implements Observer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_contact);
 
-        username = (EditText) findViewById(R.id.username);
-        email = (EditText) findViewById(R.id.email);
-
         Intent intent = getIntent();
         pos = intent.getIntExtra("position", 0);
 
         context = getApplicationContext();
-
         contactListController.addObserver(this);
         contactListController.loadContacts(context);
-
-        on_create_update = true;
-
-        contactListController.addObserver(this);
-        contactListController.loadContacts(context);
-
         on_create_update = false;
     }
 
@@ -79,11 +68,9 @@ public class EditContactActivity extends AppCompatActivity implements Observer {
         }
 
         String id = contact.getId(); // Reuse the contact id
-
         Contact updated_contact = new Contact(username_str, email_str, id);
 
-        // Edit Contact
-
+        // Edit Contact: replace contact with updated contact
         boolean success = contactListController.editContact(contact, updated_contact, context);
         if(!success) {
             return;
@@ -106,6 +93,15 @@ public class EditContactActivity extends AppCompatActivity implements Observer {
     }
 
     /**
+     * Called when the activity is destroyed, thus we remove this activity as a listener
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        contactListController.removeObserver(this);
+    }
+
+    /**
      * Only need to update the view from the onCreate method
      */
     @Override
@@ -114,10 +110,13 @@ public class EditContactActivity extends AppCompatActivity implements Observer {
             contact = contactListController.getContact(pos);
             contactController = new ContactController(contact);
 
+            username = (EditText) findViewById(R.id.username);
+            email = (EditText) findViewById(R.id.email);
+
+            // Update the view
             email.setText(contactController.getEmail());
             username.setText(contactController.getUsername());
 
         }
-
     }
 }

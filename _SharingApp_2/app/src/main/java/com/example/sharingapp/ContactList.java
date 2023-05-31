@@ -53,8 +53,8 @@ public class ContactList extends Observable {
 
     public int getIndex(Contact contact) {
         int index = 0;
-        for (Contact i : contacts) {
-            if (i.getUsername().equals(contact.getUsername())) {
+        for (Contact c : contacts) {
+            if (c.getId().equals(contact.getId())) {
                 return index;
             }
             index += 1;
@@ -63,8 +63,8 @@ public class ContactList extends Observable {
     }
 
     public boolean hasContact(Contact contact) {
-        for (Contact i : contacts) {
-            if (i.getUsername().equals(contact.getUsername())) {
+        for (Contact c : contacts) {
+            if (c.getId().equals(contact.getId())) {
                 return true;
             }
         }
@@ -96,6 +96,10 @@ public class ContactList extends Observable {
         notifyObservers();
     }
 
+    /**
+     * @param context
+     * @return true: if save is successful, false: if save is unsuccessful
+     */
     public boolean saveContacts(Context context) {
         try {
             FileOutputStream fos = context.openFileOutput(FILENAME, 0);
@@ -115,7 +119,11 @@ public class ContactList extends Observable {
     }
 
     public boolean isUsernameAvailable(String username) {
-        return !contacts.contains(getContactByUsername(username));
+        for (Contact c : contacts) {
+            if (c.getUsername().equals(username)) {
+                return false;
+            }
+        }
+        return true;
     }
-
 }
