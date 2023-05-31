@@ -226,6 +226,23 @@ _   The open/closed principle:
     _Helps keep a system stable by “closing” classes to change.
     _Allows a system to open for extension through inheritance or interfaces.
 
+2.3.3 – Dependency Inversion Principle
+The principle states that high-level modules should depend on high-level generalizations, and not on low-level details. This keeps client classes independent of low-level functionality.
+_   This suggests that client classes should depend on an interface or abstract class, rather than a concrete resource. Further, concrete resources should have their behaviors generalized into an interface or abstract class. Interfaces and abstract classes are high-level resources. They define a general set of behaviors. Concrete classes are low-level resources. They provide the implementation for behaviors.
+_   In a low-level dependency, the client classes name and make direct references to a concrete class. Subsystems are directly dependent on each other, so the client class will directly reference some concrete class in the enterprise subsystem, which will directly reference some concrete class in your backend.
+    _Large changes are impractical and could entail unexpected side effects if old references are missed. The dependency inversion principle addresses this issue by generalizing low-level functionality into interfaces or abstract classes. This way, when alternative implementations are offered, they can be used with ease.
+_   In high-level dependency, the client class is dependent on a high-level generalization rather than a low-level concrete class, allowing changes to be more easily made to resources. The generalization gives a degree of indirection by allowing behaviors to be invoked in a concrete class through an interface.
+    _High-level dependency prevents the client class from being directly coupled with a specific concrete class. A client class is dependant on expected behaviors, not on a specific implementation of behaviors.
+_   When the dependency inversion principle and high-level dependency are used, the overall architecture of a system will look similar to design patterns explored earlier in this course. Behaviors are generalized across each subsystem into an interface. The concrete classes of each subsystem will then implement the interface. Client classes will make references to the interface instead of directly to the concrete classes.
+_   Object-oriented designs should use method calls through a level of indirection. The dependency inversion principle facilitates the use of indirections by writing dependencies to generalizations, rather than to a concrete class. It helps insulate parts of a system from specific implementations of functionality. It is best practice to program to generalizations, like interfaces and abstract classes, rather than directly to a concrete class.
+_   The dependency inversion principle is a means to:
+    _Change the referencing of concrete classes from being direct to indirect.
+    _Generalize the behaviors of your concrete classes into abstract classes and interfaces.
+    _Have client classes interact with your system through a generalization rather than directly with concrete resources.
+    _Put emphasis on high-level dependency over low-level concrete dependency.
+_   Using the dependency inversion principle may seem like extra work, but the effort is worthwhile, particularly if you are working on a large system. If a system is too heavily coupled, changes will be difficult to make. This principle helps ensure a robust software solution.
+
+
 
 
 
