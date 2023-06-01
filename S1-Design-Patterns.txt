@@ -242,6 +242,28 @@ _   The dependency inversion principle is a means to:
     _Put emphasis on high-level dependency over low-level concrete dependency.
 _   Using the dependency inversion principle may seem like extra work, but the effort is worthwhile, particularly if you are working on a large system. If a system is too heavily coupled, changes will be difficult to make. This principle helps ensure a robust software solution.
 
+/
+Less coupling in your system means that your system can be more flexible and is capable of handling changes to its existing code base such as the integration of new features.The design patterns that we have explored make heavy use of generalization, abstraction and polymorphism as means of indirection. While inheritance is a great way to achieve a high amount of code reuse, it comes with the cost of tightly coupling the super class with its subclasses.
+/
+
+2.3.4 – Composing Objects Principle
+Inheritance can be a great way to achieve a high level of code reuse; it entails a cost of tightly coupling superclasses with their subclasses. Subclasses inherit all attributes and methods of a superclass, as long as access modifiers are not private. This means that if you have multiple levels of inheritance, a subclass at the bottom of the inheritance tree can potentially provide access to  attributes and behaviors of all the superclasses.
+_   Coupling objects principle is a means of circumventing this problem, by providing a means for a high amount of code reuse without using inheritance. The principle states that classes should achieve code reuse through aggregation rather than inheritance. Aggregation and delegation offer less coupling than inheritance, since the composed classes do not share attributes or implementations of behaviors, and are more independent of each other. This means they have an 
+_   Design patterns like the composite design pattern and decorator design pattern use this design principle. These two patterns compose concrete classes to build more complex objects at run time. The overall behavior comes from the composed sum of the individual objects. An object can reuse and aggregate another object to delegate certain requests to it. The system should be designed so that concrete classes can delegate tasks to other concrete classes.
+_   The way classes will compose themselves is determined during design. Objects can be composed recursively and uniformly, or they can be composed of other objects that have a consistent type.
+_   Composing objects provides your system with more flexibility:
+    _When  objects are composed,  it is not required to find commonalities between two classes and couple them together with inheritance. Instead, classes can be designed to work together without sharing anything. This provides flexibility, especially if the system requirements change. Inheritance may require restructuring the inheritance tree.
+    _Composing objects also allows the dynamic change of behaviors of objects at run time. A new overall combination of  behavior can be built by composing objects. Inheritance, on the other hand, requires behaviors of classes to be defined during compile-time, so they cannot change while the program is running.
+_   Disadvantages to keep in mind for composition:
+    _In composition, implementations for all behavior must be provided, without the benefit of inheritance to share code.
+    _There could be very similar implementations across classes, which could take time and resources. With inheritance, common implementation is simply accessed within the superclass, so each subclass does not have to have its own implementation of shared behavior.
+_   In summary, the composing objects principle will:
+    _Provide a means of code reuse without the tight coupling of inheritance.
+    _Allow objects to dynamically add behaviors at run time.
+    _Provide your system with more flexibility, so that less time needs to be spent on system updates.
+_   Although composing provides better flexibility and less coupling, while maintaining reusability, there is a place for inheritance. In order to determine which design principle is appropriate to use, you must assess the needs of your system, and choose what best fits the situation and problem at hand.
+
+
 
 
 
