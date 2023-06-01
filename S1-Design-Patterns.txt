@@ -263,6 +263,18 @@ _   In summary, the composing objects principle will:
     _Provide your system with more flexibility, so that less time needs to be spent on system updates.
 _   Although composing provides better flexibility and less coupling, while maintaining reusability, there is a place for inheritance. In order to determine which design principle is appropriate to use, you must assess the needs of your system, and choose what best fits the situation and problem at hand.
 
+S3 - 2.3.5 – Interface Segregation Principle
+The principle states that a class shouldn't be forced to depend on methods it does not use. This means that any classes that implement an interface should not have “dummy” implementations of any methods defined in the interfaces. Instead, large interfaces should be split into smaller generalizations.
+_   In general, your design should strive to program to interfaces instead of concrete classes. However, if there is only a single interface that holds all the methods for all the clients, then all clients will have to unnecessarily implement all other clients’ methods just to make their interface compile.
+_   Interfaces are an integral part of object-oriented systems. They reduce coupling by generalizing concrete classes. However, they must be used properly. Large interfaces in and of themselves are not necessarily a poor design choice, but you need to take into account the context of your system to decide if the interface segregation principle should be applied and if the interfaces should be split into smaller generalizations.
+_   Note that it will not always be clear how to properly segregate your interfaces, or to predict future changes in requirements that will need interfaces to be split up. Well-defined interfaces are important – interfaces are descriptions of what parts of your system can do. The better the description the easier it will be to create, update, and maintain software.
+_   In summary, the interface segregation principle states that:
+    _A class should not be forced to depend on methods it does not use.
+    _Interfaces should be split up in such a way that they can properly describe the separate functionalities of your system.
+
+
+
+    
 
 
 
