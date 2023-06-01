@@ -272,9 +272,33 @@ _   In summary, the interface segregation principle states that:
     _A class should not be forced to depend on methods it does not use.
     _Interfaces should be split up in such a way that they can properly describe the separate functionalities of your system.
 
+2.3.6 – Principle of Least Knowledge
+This principle arises from one means of managing complexity, which suggests that a class should be designed so that it does not need to know about and depend upon almost every other class in the system. If classes have a narrow view of what other classes it knows, then coupling is decreased, and a system is easier to maintain.
+_   This principle is also realized in a rule known as the Law of Demeter. The Law of Demeter is composed of several different rules that provide guidelines as to what kind of method calls a particular method can make – in other words, they help determine how classes should interact. This design principle focuses on how method calls should be made, rather than on specific ways of structuring the design of a system.
+_   The four rules of the Law of Demeter as summarized below: A method, M, of an object should only call other methods if they are:
+    _1. Encapsulated within the same object. In other words, a method encapsulated within a class is allowed to call any other method also encapsulated within the same class.
+    _2. Encapsulated within an object that is in the parameters of M. As a method parameter is considered local to the method, methods in the class for the parameter are allowed to be called.
+    _3. Encapsulated within an object that is instantiated inside the M. This means that if a method makes a new object, then the method is allowed to use that new object’s methods. The object is considered local to the creating method, the same way an object is considered local when it is a parameter.
+    _4. Encapsulated within an object that is referenced in an instance variable of the class for M. This means that a method of a class can call methods of the classes of its instance variables. If a class has direct reference to the Friend class, any method inside of O is allowed to call any method of Friend class.
+_   The Law of Demeter may seem complicated and abstract, but at its core, boils down to the idea that a method should not be allowed to access another method by “reaching through” an object. This means that a method should not invoke methods of any object that is not real.
+_   The four rules explained above help outline what is considered a local object. These objects should be passed in through a parameter, or they should be instantiated within a method, or they should be in instance variables. This allows methods to directly access the behaviors of local objects.
+_   These conditions commonly occur when you have a chain method calls to objects you should not know about, or when you use methods from an “unknown” type of object that is returned back to you from your local method call. A good metaphor for this is driving a car. When you drive a car, you do not issue individual commands to every component of the car. Instead, you simply tell the car to drive, and the car will know to deal with its components.
+_   Another way you can “reach through” an object is when the method receives an object of an unknown type as a return value, and you make method calls to the returned object. Returned objects must be of the same type as:
+    _Those declared in the method parameter
+    _Those declared and instantiated locally in the method
+    _Those declared in instance variable of the class that encapsulates the method
+_   The Law of Demeter defines how classes should interact with each other. They should not have full access to the entire system because this causes a high degree of coupling. A class should only interact with those that are considered immediate “friends”. This prevents unwanted effects from cascading through the entire system.
+_   Although the Law of Demeter can help reduce coupling, you should recognize that it also requires more time when designing and implementing a system. It may not always be feasible to follow the Law of Demeter due to limitations of time and resources. Other times, some degree of coupling may be unavoidable, at which point, you’ll need to decide how much coupling is tolerable.
 
 
-    
+
+
+
+
+
+
+
+
 
 
 
