@@ -30,30 +30,11 @@ public class AddContactActivity extends AppCompatActivity {
 
     public void saveContact(View view) {
 
-        String username_str = username.getText().toString();
-        String email_str = email.getText().toString();
-
-        if (username_str.equals("")) {
-            username.setError("Empty field!");
+        if(!validateInput()) {
             return;
         }
 
-        if (email_str.equals("")) {
-            email.setError("Empty field!");
-            return;
-        }
-
-        if (!email_str.contains("@")){
-            email.setError("Must be an email address!");
-            return;
-        }
-
-        if (!contactListController.isUsernameAvailable(username_str)){
-            username.setError("Username already taken!");
-            return;
-        }
-
-        Contact contact = new Contact(username_str, email_str, null);
+        Contact contact = new Contact(username.getText().toString(), email.getText().toString(), null);
 
         // Add contact
         boolean success = contactListController.addContact(contact, context);
@@ -63,5 +44,33 @@ public class AddContactActivity extends AppCompatActivity {
 
         // End AddContactActivity
         finish();
+    }
+
+    public boolean validateInput() {
+
+        String username_str = username.getText().toString();
+        String email_str = email.getText().toString();
+
+        if (username_str.equals("")) {
+            username.setError("Empty field!");
+            return false;
+        }
+
+        if (email_str.equals("")) {
+            email.setError("Empty field!");
+            return false;
+        }
+
+        if (!email_str.contains("@")){
+            email.setError("Must be an email address!");
+            return false;
+        }
+
+        if (!contactListController.isUsernameAvailable(username_str)){
+            username.setError("Username already taken!");
+            return false;
+        }
+
+        return true;
     }
 }
