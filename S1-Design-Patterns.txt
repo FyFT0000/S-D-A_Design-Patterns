@@ -316,41 +316,43 @@ _   Data class: is on the opposite end of the spectrum of the large class. It oc
 _   Data Clumps: are groups of data appearing together in the instance variables of a class, or parameters to methods.
     _If there are many methods in the system that perform various manipulations on the variables, it is better to have an object as the parameter, instead of using the variables as parameters repeatedly. That object can be used in its place as a parameter.
     _Be careful not to just create data classes, however. The classes should do more than just store data.
-    
+_   Long Parameter List: A method with a long parameter list can be difficult to use. They increase the chance of something going wrong.
+    _The common solution to reduce the number of parameters is often to have global variables but these have issues of their own and generally should be avoided.
+    _Methods with long parameter lists require extensive comments to explain what each of the parameters does and what it should be. Extensive commenting, as explained earlier in this lesson, is another code smell. If long parameter lists are not commented, however, then it may be necessary to look inside the implementation to see how they are used which breaks encapsulation.
+    _The best solution for long parameter lists is to introduce parameter objects. A parameter object captures context. They are common in graphics libraries, where toolkits are passed into an object to provide context for a graphics routine. Instead of setting details, such as the pen color, line width, pen shape, opacity, etc., as individual parameters, this information would be provided as a parameter object. When the program needs to execute a method, all of the information about what the stroke should look like can be an individual parameter value.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+2.3.7 – Part 2 - Code Smells
+_   Divergent Change: It occurs when you have to change a class in many different ways, for many different reasons.
+    _This relates to the large class code smell, where a large class has many different responsibilities. These responsibilities may need to be changed in a variety of ways, for a variety of purposes. Poor separation of concerns is therefore a common cause of divergent change.
+    _Classes should have only one specific purpose because this reduces the number of reasons that the code would need to change, and reduces the variety of changes needed to be implemented. If a class is being changed in multiple ways, then this is a good indicator that the responsibilities of the class should be broken up into separate classes, and responsibilities should be extracted into their own classes.
+    _Separation of concerns resolves two code smells – large class and divergent change.
+_   Shotgun Surgery: is a code smell that occurs when a change needs to be made to one requirement, and numerous classes all over the design need to be touched to make that one change.
+    _In good design, a small change is ideally localized to one or two places (although this is not always possible).
+    _It can happen if you are trying to add a feature, adjust code, fix bugs, or change algorithms. If changes need to be made all over the code, then the chances of missing a change or creating an issue elsewhere increase.
+    _Modular code is not always an option, however. Some changes require shotgun surgery no matter how well designed the code is. For example, changing a copyright statement or licensing will require changing every file in the system to update the block of copyright text.
+    _The shotgun surgery smell is normally resolved by moving methods around. If a change requires you to make changes to many methods in different classes, then that can be an indicator that the methods may be better consolidated into one or two classes. However, you must be careful not to move so many methods into one class because that it becomes a large class code smell.
+    _If a change in one place leads to changes in other places, then this indicates that the methods are related in some way. Perhaps there is a better way to organize them. If not, then you may have to deal with it as it is.
+_   Feature Envy: occurs when there is a method that is more interested in the details of a class other than the one it is in.
+    _If two methods or classes are always talking to one another and seem as if they should be together, then chances are this is true.
+_   Inappropriate Intimacy: occurs when two classes depend too much on one another through two-way communication.
+    _If two classes are closely coupled, e.g., so a method in one class calls methods of the other, and vice versa, then it is likely necessary to remove this cycle. Methods should be factored out so both classes use another class. At the very least, this makes communication one way and should create looser coupling.
+    _Cycles are not always necessarily a bad thing. Sometimes, they are necessary. But, if there’s a way to make the design simpler and easier to understand, then it is a good solution.
+_   Message Chains: occurs when the code has long message chains where you are calling, and get an object back, and then calling again, and getting another object.
+    _This is a bad message chain, and it can cause rigidity, or complexity in your design, and makes code harder to test independently. It also potentially violates the Law of Demeter, which specifies which methods are allowed to be called.
+    _In a bad message chain, to find an object in the code, it might be necessary to navigate the chain and these object’s dependencies. However, particular navigation should not be baked into objects. If the design were reworked, and the dependencies were restructured, it will break the code, which is a sign of a brittle design.
+    _Long chains of calls could be appropriate, however, if they return a limited set of objects that methods are allowed to be called on. If those objects follow the Law of Demeter, then the chain is appropriate.
+_   Primitive Obsession: occurs when you rely on the use of built-in types too much.
+    _Built-in types, or primitives, are things like ints, longs, floats, or strings. Although there will be a need for them in the code, they should only exist at the lowest levels of the code. Overuse of primitive types occurs when abstractions are not identified, and suitable classes are not defined.
+    _Theoretically, almost everything in a system could be defined or encoded as Strings and put into Arrays. In fact, in the 1960s, this is how code looked. Languages have evolved though, to allow for defining your own types for better abstraction. Otherwise, you have a non-OO way of thinking. If everything is stored as a string, then a key abstraction could be buried in the detailed code and would not be evident when looking at the design of the system, such as through a UML diagram. There would be no clear separation between strings.
+    _If you are using primitive types often at a high level, then it is a good indicator that suitable classes are not being declared, and there is a primitive obsession code smell in the system.
+_   Switch Statements: occur when switch statements are scattered throughout a program. If a switch is changed, then the others must be found and updated as well.
+    _Although there can be a need for long if/else statements in the code, sometimes switch statements may be handled better. For example, if conditionals are checking on type codes or the types of something, then there is a better way of handling the switch statements. It may be possible to reduce conditionals down to a design that uses polymorphism.
+_   Speculative Generality: occurs when you make a superclass, interface, or code that is not needed at the time, but that may be useful someday. This practice introduces generality that may not actually help the code, but “over-engineers” it.
+    _In Agile development, it is best to practice Just in Time Design. This means that there should be just enough design to take the requirements for a particular iteration to a working system. This means that all that needs to be designed for are the set of requirements chosen at the beginning of an iteration. All other requirements in a backlog can be ignored, as they may never actually be needed.
+    _Software changes frequently. Clients can change their mind at any time, and drop requirements from the backlog. Your design should stay simple, and time should not be lost on writing code that may never be used.
+    _If generalization is necessary, then it should be done. This change may take longer at the time, compared to if it is set up beforehand, but it is better than writing code that may not be needed down the line.
+_   Refused Request: occurs when a subclass inherits something but does not need it.
+    _If a superclass declares a common behavior across subclasses, and subclasses are inheriting things they do not need or use, then they may not be appropriate subclasses for the superclass. Instead, it may make more sense for a stand-alone class. Or perhaps the unwanted behaviors should not be defined in the superclass. Finally, if only some subclasses use them, then it may be better to define those behaviors in the subclasses only.
 
 
 
