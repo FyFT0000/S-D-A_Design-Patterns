@@ -290,6 +290,37 @@ _   Another way you can “reach through” an object is when the method receive
 _   The Law of Demeter defines how classes should interact with each other. They should not have full access to the entire system because this causes a high degree of coupling. A class should only interact with those that are considered immediate “friends”. This prevents unwanted effects from cascading through the entire system.
 _   Although the Law of Demeter can help reduce coupling, you should recognize that it also requires more time when designing and implementing a system. It may not always be feasible to follow the Law of Demeter due to limitations of time and resources. Other times, some degree of coupling may be unavoidable, at which point, you’ll need to decide how much coupling is tolerable.
 
+Anti-Patterns
+2.3.7 – Part 1 - Code Smells
+Refactoring is the process of making changes to your code so that the external behaviours of the code are not changed, but the internal structure is improved. This is done by making small, incremental changes to the code structure and testing frequently to make sure these changes have not altered the behavior of the code.
+_   Ideally, refactoring changes are made when features are added, and not when the code is complete. This saves time and makes adding features easier. Changes are needed in code when bad code emerges. Just like patterns emerge in design, bad code can emerge as patterns as well. These are known as anti-patterns or code smells.
+_   Comments: This code smell can occur between two extremes.
+    _If no comments are provided in the code, it can be hard for someone else, or even the original developer, to return to the code after some time has passed and tried to understand what the code is doing or should be doing. _   If there are too many comments, they might get out of sync as the code changes. Comments can be a “deodorant” for bad-smelling code. The use of a lot of comments to explain complicated design can indicate that bad design is being covered up.
+    _There are other ways that comments can indicate bad code, though. If the comments take on a “reminder” nature, they indicate something that needs to be done, or that if a change is made to one section in the code, it needs to be updated in another method -- these are two examples that indicate bad code.
+    _Comments might reveal that the programming language selected for the software is not appropriate. This could happen if the programming language does not support the design principles being applied. 
+    _Comments are very useful for documenting application programmer interfaces (APIs) in the system and for documenting the rationale for a particular choice of data structure or algorithm, which makes it easier for others to understand and use the code. But comments should be used in balance, or they may indicate a bad smell!
+_   Duplicated code:Occurs when blocks of code exist in the design that is similar but has slight differences.
+    _If this blocks of code appear in multiple places in the software, which can be a problem, because if something needs to change, then the code needs to be updated in multiple places. This applies to adding functionalities, updating an algorithm, or fixing a bug.
+    _Instead, if the code only needed to be updated in one location, it is easier to implement the change. It also reduces the chance that a block of code was missed in an update or change.
+    _This anti-pattern relates to the D.R.Y. principle, or “Don’t Repeat Yourself”, which suggests that programs should be written so that they can perform the same tasks but with less code.
+_   Long method: This anti-pattern suggests that code should not have long methods. Long methods can indicate that the method is more complex or has more occurring within it than it should.
+    _Determining if a code is too long can be difficult. There is even some debate if length of code is even a good measure of code complexity. Some methods, such as setting up a user interface, can be naturally long, even if focused on a specific task. Sometimes a long method is appropriate.
+    _This anti-pattern may also depend on the programming language for the system. For example, Smalltalk methods tend to be short, with a 15-line average. Designs in this language tend to have highly cohesive classes and methods, but are also highly coupled. Context is therefore important in this anti-pattern.
+_   Large Class: suggests that classes should not be too large. This is similar to the long pattern above.
+    _Large classes are commonly referred to as God classes, Blob classes, or Black Hole classes. They are classes that continue to grow and grow, although they typically start out as regular-sized classes.
+    _Large classes occur when more  responsibilities are needed, and these classes seem to be the appropriate place to put the responsibilities. Over time, however, these responsibilities might attract more responsibilities, and the class continues to get larger and larger and take on more and more responsibilities.
+    _This growth will require extensive comments to document wherein the code of the class certain functionalities exist. Comments, as discussed previously in this lesson, are another indicator of bad code. It is helpful to catch this code smell early, as once a class is too large, it can be difficult and time-consuming to fix.
+    _Classes should have an explicit purpose to keep the class cohesive, so it does one thing well. If functionality is not specific to the class’s responsibility, it may be better to place it elsewhere.
+_   Data class: is on the opposite end of the spectrum of the large class. It occurs when there is too small of a class. These are referred to as data classes.
+    _Data classes are classes that contain only data and no real functionality. These classes usually have only getter and setter methods, but not much else. This indicates that it may not be a good abstraction or a necessary class.
+_   Data Clumps: are groups of data appearing together in the instance variables of a class, or parameters to methods.
+    _If there are many methods in the system that perform various manipulations on the variables, it is better to have an object as the parameter, instead of using the variables as parameters repeatedly. That object can be used in its place as a parameter.
+    _Be careful not to just create data classes, however. The classes should do more than just store data.
+    
+
+
+
+
 
 
 
