@@ -52,46 +52,13 @@ public class AddItemActivity extends AppCompatActivity {
 
     public void saveItem (View view) {
 
-        String title_str = title.getText().toString();
-        String maker_str = maker.getText().toString();
-        String description_str = description.getText().toString();
-        String length_str = length.getText().toString();
-        String width_str = width.getText().toString();
-        String height_str = height.getText().toString();
-
-        if (title_str.equals("")) {
-            title.setError("Empty field!");
+        if(!validateInput()) {
             return;
         }
 
-        if (maker_str.equals("")) {
-            maker.setError("Empty field!");
-            return;
-        }
-
-        if (description_str.equals("")) {
-            description.setError("Empty field!");
-            return;
-        }
-
-        if (length_str.equals("")) {
-            length.setError("Empty field!");
-            return;
-        }
-
-        if (width_str.equals("")) {
-            width.setError("Empty field!");
-            return;
-        }
-
-        if (height_str.equals("")) {
-            height.setError("Empty field!");
-            return;
-        }
-
-        Item item = new Item(title_str, maker_str, description_str, image, null );
+        Item item = new Item(title.getText().toString(), maker.getText().toString(), description.getText().toString(), image, null);
         ItemController item_controller = new ItemController(item);
-        item_controller.setDimensions(length_str, width_str, height_str);
+        item_controller.setDimensions(length.getText().toString(), width.getText().toString(), height.getText().toString());
 
         // Add item
         boolean success = item_list_controller.addItem(item, context);
@@ -102,6 +69,43 @@ public class AddItemActivity extends AppCompatActivity {
         // End AddItemActivity
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public boolean validateInput() {
+
+        String title_str = title.getText().toString();
+        String maker_str = maker.getText().toString();
+        String description_str = description.getText().toString();
+        String length_str = length.getText().toString();
+        String width_str = width.getText().toString();
+        String height_str = height.getText().toString();
+
+        if (title_str.equals("")) {
+            title.setError("Empty field!");
+            return false;
+        }
+        if (maker_str.equals("")) {
+            maker.setError("Empty field!");
+            return false;
+        }
+        if (description_str.equals("")) {
+            description.setError("Empty field!");
+            return false;
+        }
+        if (length_str.equals("")) {
+            length.setError("Empty field!");
+            return false;
+        }
+        if (width_str.equals("")) {
+            width.setError("Empty field!");
+            return false;
+        }
+        if (height_str.equals("")) {
+            height.setError("Empty field!");
+            return false;
+        }
+
+        return true;
     }
 
     public void addPhoto(View view) {
@@ -126,4 +130,5 @@ public class AddItemActivity extends AppCompatActivity {
             super.onActivityResult(request_code, result_code, intent);
         }
     }
+
 }
